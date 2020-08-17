@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'x%-m*h!hun@#4**sv)ufu64vo6pta_#w*-4fd#3_^#kxkpyc4i'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -82,18 +82,6 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {}
 DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'infoteh_db',
-        'USER': 'infoteh',
-        'PASSWORD': 'i1n2f3o4t5e6h7',
-        'HOST': os.environ['DATABASE_URL'],
-        'PORT': '5432',
-    }
-}
-"""
 
 
 # Password validation
