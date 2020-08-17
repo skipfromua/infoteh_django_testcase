@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,7 +85,7 @@ DATABASES = {
         'NAME': 'infoteh_db',
         'USER': 'infoteh',
         'PASSWORD': 'i1n2f3o4t5e6h7',
-        'HOST': 'infoteh-testcase.herokuapp.com',
+        'HOST': os.environ['DATABASE_URL'],
         'PORT': '5432',
     }
 }
