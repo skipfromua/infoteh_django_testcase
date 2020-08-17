@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea name="message_body"></textarea>
+        {% if Error_message %}
+            {{ Error_message }}
+        {% endif %}
+        <input type="file" name="image_file">
+        <button type="submit">Submit</button>
+    </form>
+{% endblock %}

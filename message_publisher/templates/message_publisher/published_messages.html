@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form method="get">
+        <input type="text" name="filter">
+        <p><input name="choise" type="radio" value="new" checked> Сначала новые</p>
+        <p><input name="choise" type="radio" value="old"> Сначала старые</p>
+        <p><input name="this_day" type="checkbox" value="day"> За последние 24 часа</p>
+        <button type="submit">Search</button>
+    </form>
+    {% for message in Messages %}
+        <p>username: {{ message.user }}</p>
+        <p>text: {{ message.message_body }}</p>
+        <p>pub_date: {{ message.pub_date }}</p>
+        {% if message.image %}
+            <img height="100px" width="100px" src = "{{ message.image.url }}">
+        {% endif %}
+        <p>---------------------------------------------------------</p>
+    {% endfor %}
+{% endblock %}

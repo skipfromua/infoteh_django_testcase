@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="post">
+    {% csrf_token %}
+    <p>Выберите себе имя пользователя:</p>
+    <input type="text" name="username" value="{{ valid_username }}">
+    {% if username_error %}
+      <p>{{ username_error }}</p>
+    {% endif %}
+    <p>Введите ваш email:</p>
+    <input type="text" name="email" value="{{ valid_email }}">
+    {% if email_error %}
+        {% for error in email_error %}
+          <p>{{ error }}</p>
+        {% endfor %}
+    {% endif %}
+    <p>Выберите себе пароль:</p>
+    <input type="password" name="password" value="{{ valid_password }}"><br>
+    {% if password_error %}
+        {% for error in password_error %}
+          {{ error }}
+        {% endfor %}
+    {% endif %}
+    <input type="submit" value="Регистрация">
+  </form>
+{% endblock %}

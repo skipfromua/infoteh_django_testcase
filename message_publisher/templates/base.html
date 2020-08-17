@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <ul>
+    <li><a href="{% url 'message_publisher:main' %}">Главная</a></li>
+    <li><a href="{% url 'message_publisher:create' %}">Создать и отправить сообщене</a></li>
+    {% if User.username %}
+      <li><a href="{% url 'authorization:logout' %}">Выход</a></li>
+    {% else %}
+      <li><a href="{% url 'authorization:login' %}">Вход</a></li>
+      <li><a href="{% url 'registration:registration' %}">Регистрация</a></li>
+    {% endif %}</ul>
+  </header>
+
+    <body>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>
