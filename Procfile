@@ -1,1 +1,1 @@
-web: gunicorn Infoteh_testcase.wsgi
+web: gunicorn config.wsgi
